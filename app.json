@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "ping-me",
-    "slug": "ping-me",
+    "name": "Ping Me",
+    "slug": "Ping Me",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
