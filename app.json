@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Ping Me",
-    "slug": "Ping Me",
+    "slug": "PingMe",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -9,7 +9,11 @@
     "userInterfaceStyle": "dark",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "associatedDomains": [
+        "applinks:immortal-redfish-31.clerk.accounts.dev",
+        "webcredentials:immortal-redfish-31.clerk.accounts.dev"
+      ]
     },
     "android": {
       "adaptiveIcon": {
@@ -37,7 +41,14 @@
       ],
       "expo-secure-store",
       "expo-web-browser",
-      "expo-build-properties"
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "deploymentTarget": "16.0"
+          }
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true
