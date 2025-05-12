@@ -5,7 +5,7 @@ interface CustomTextProps extends TextProps {
   children: React.ReactNode;
 }
 
-export function Typo({ children, style, ...props }: CustomTextProps) {
+export function Text({ children, style, ...props }: CustomTextProps) {
   return (
     <RNText
       style={[{ color: "white" }, style]}

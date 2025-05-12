@@ -7,9 +7,9 @@ export default function AUTHLayout() {
   if (isSignedIn) {
     return <Redirect href={"/(chat)"} />;
   }
-  
+
   return (
-    <Stack>
+    <Stack screenOptions={{ headerShown: false }}>
       <Stack.Screen name="index" />
     </Stack>
   );
