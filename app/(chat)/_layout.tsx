@@ -1,3 +1,4 @@
+import { colors } from "@/utils/colors";
 import { useUser } from "@clerk/clerk-expo";
 import { Image } from "expo-image";
 import { Link, Redirect, Stack } from "expo-router";
@@ -84,7 +85,7 @@ export default function RootLayout() {
               <Pressable style={{ marginRight: 10 }}>
                 <CaretLeft
                   size={22}
-                  color="#007AFF"
+                  color={colors.Primary}
                 />
               </Pressable>
             </Link>
