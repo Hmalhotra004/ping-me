@@ -1,6 +1,11 @@
 import { Client, Databases } from "react-native-appwrite";
 
-if (!process.env.EXPO_PUBLIC_APPWRITE_APP_ID) {
+if (
+  !process.env.EXPO_PUBLIC_APPWRITE_APP_ID ||
+  !process.env.EXPO_PUBLIC_APPWRITE_DB_ID ||
+  !process.env.EXPO_PUBLIC_APPWRITE_CHATROOM_ID ||
+  !process.env.EXPO_PUBLIC_APPWRITE_MESSAGES_ID
+) {
   throw new Error("EXPO_PUBLIC_APPWRITE_APP_ID is not set");
 }
 
