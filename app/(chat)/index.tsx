@@ -1,16 +1,15 @@
 import ItemTitleAndDescription from "@/components/ItemTitleAndDescription";
 import { appwriteConfig, db } from "@/utils/appwrite";
 import { colors } from "@/utils/colors";
-import { chatRooms } from "@/utils/test-data";
 import { ChatRoom } from "@/utils/types";
+import { Query } from "appwrite";
 import { useRouter } from "expo-router";
 import { CaretRight } from "phosphor-react-native";
 import { useEffect, useState } from "react";
 import { FlatList, Pressable, RefreshControl, StyleSheet } from "react-native";
-import { Query } from "react-native-appwrite";
 
 export default function Index() {
-  const [charRooms, setChatRooms] = useState<ChatRoom[]>([]);
+  const [chatRooms, setChatRooms] = useState<ChatRoom[]>([]);
   const [refresh, setRefresh] = useState(false);
   const router = useRouter();
 
@@ -21,13 +20,22 @@ export default function Index() {
         appwriteConfig.col.chatRooms,
         [Query.limit(100)]
       );
-      console.log(documents);
+      setChatRooms(documents as ChatRoom[]);
     } catch (error) {
       console.log(error);
     }
   }
 
-  async function handleRefresh() {}
+  async function handleRefresh() {
+    try {
+      setRefresh(true);
+      await fetchChatRooms();
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setRefresh(false);
+    }
+  }
 
   useEffect(() => {
     fetchChatRooms();
@@ -36,7 +44,7 @@ export default function Index() {
   return (
     <FlatList
       data={chatRooms}
-      keyExtractor={(item) => item.id}
+      keyExtractor={(item) => item.$id}
       refreshControl={
         <RefreshControl
           refreshing={refresh}
@@ -50,7 +58,7 @@ export default function Index() {
           onPress={() =>
             router.push({
               pathname: "/(chat)/[chat]",
-              params: { chat: item.id },
+              params: { chat: item.$id },
             })
           }
           style={styles.container}

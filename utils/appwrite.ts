@@ -1,4 +1,4 @@
-import { Client, Databases } from "react-native-appwrite";
+import { Client, Databases } from "appwrite";
 
 if (
   !process.env.EXPO_PUBLIC_APPWRITE_APP_ID ||
@@ -23,8 +23,8 @@ const appwriteConfig = {
 
 const client = new Client()
   .setEndpoint(appwriteConfig.endpoint)
-  .setProject(appwriteConfig.projectId)
-  .setPlatform(appwriteConfig.platform);
+  .setProject(appwriteConfig.projectId);
+// .setPlatform(appwriteConfig.platform);
 
 const db = new Databases(client);
 export { appwriteConfig, client, db };
