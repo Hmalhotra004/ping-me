@@ -52,6 +52,13 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "fba35768-4107-4d5d-abef-65278258305e"
+      }
+    },
+    "owner": "hardik05"
   }
 }
